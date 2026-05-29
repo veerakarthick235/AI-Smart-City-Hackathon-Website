@@ -1,6 +1,6 @@
 .page {
   min-height: 100vh;
-  padding-top: 80px;
+  padding-top: 120px;
 }
 
 .emptyState {
@@ -26,15 +26,18 @@
 }
 
 .winnersContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 0 auto;
 }
 
 .winnerCard {
-  padding: 48px;
+  padding: 32px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .cardGrand {
@@ -81,17 +84,17 @@
 }
 
 .badgeContainer {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .categoryBadge {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: var(--radius-full);
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
 }
 
@@ -111,9 +114,10 @@
 }
 
 .cardContent {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex-grow: 1;
 }
 
 .mainInfo h2 {

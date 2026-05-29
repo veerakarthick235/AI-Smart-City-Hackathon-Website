@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { 
   Calendar, 
   Users, 
@@ -77,12 +78,12 @@ export default function AdminDashboard() {
   }, []);
 
   const statCards = [
-    { label: 'Total Events', value: stats.events, icon: Calendar, color: '#3b82f6', bg: '#eff6ff' },
-    { label: 'Participants', value: stats.participants, icon: Users, color: '#10b981', bg: '#ecfdf5' },
-    { label: 'Submitted Projects', value: stats.projects, icon: FolderGit2, color: '#8b5cf6', bg: '#f5f3ff' },
-    { label: 'Active Judges', value: stats.judges, icon: Gavel, color: '#f59e0b', bg: '#fffbeb' },
-    { label: 'Awards Given', value: stats.winners, icon: Trophy, color: '#ef4444', bg: '#fef2f2' },
-    { label: 'Certificates Issued', value: stats.certificates, icon: Award, color: '#06b6d4', bg: '#ecfeff' },
+    { label: 'Total Events', value: stats.events, icon: Calendar, color: '#3b82f6', bg: '#eff6ff', href: '/admin/events' },
+    { label: 'Participants', value: stats.participants, icon: Users, color: '#10b981', bg: '#ecfdf5', href: '/admin/participants' },
+    { label: 'Submitted Projects', value: stats.projects, icon: FolderGit2, color: '#8b5cf6', bg: '#f5f3ff', href: '/admin/projects' },
+    { label: 'Active Judges', value: stats.judges, icon: Gavel, color: '#f59e0b', bg: '#fffbeb', href: '/admin/judges' },
+    { label: 'Awards Given', value: stats.winners, icon: Trophy, color: '#ef4444', bg: '#fef2f2', href: '/admin/winners' },
+    { label: 'Certificates Issued', value: stats.certificates, icon: Award, color: '#06b6d4', bg: '#ecfeff', href: '/admin/certificates' },
   ];
 
   return (
@@ -99,20 +100,22 @@ export default function AdminDashboard() {
       ) : (
         <div className={styles.statsGrid}>
           {statCards.map((stat, i) => (
-            <div key={i} className={styles.statCard}>
-              <div className={styles.statInfo}>
-                <span className={styles.statLabel}>{stat.label}</span>
-                <h3 className={styles.statValue}>
-                  {stat.value.toLocaleString()}
-                </h3>
+            <Link href={stat.href} key={i} style={{ textDecoration: 'none' }}>
+              <div className={styles.statCard}>
+                <div className={styles.statInfo}>
+                  <span className={styles.statLabel}>{stat.label}</span>
+                  <h3 className={styles.statValue}>
+                    {stat.value.toLocaleString()}
+                  </h3>
+                </div>
+                <div 
+                  className={styles.statIcon} 
+                  style={{ color: stat.color, backgroundColor: stat.bg }}
+                >
+                  <stat.icon size={24} />
+                </div>
               </div>
-              <div 
-                className={styles.statIcon} 
-                style={{ color: stat.color, backgroundColor: stat.bg }}
-              >
-                <stat.icon size={24} />
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}

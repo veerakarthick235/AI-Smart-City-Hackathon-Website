@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Medal, Award, ArrowRight } from 'lucide-react';
 import GradientButton from '../ui/GradientButton';
@@ -44,6 +45,35 @@ const cardVariants = {
 };
 
 export default function Winners() {
+  const [dbWinners, setDbWinners] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function fetchWinners() {
+      try {
+        const res = await fetch('/api/winners');
+        if (res.ok) {
+          const data = await res.json();
+          setDbWinners(data.slice(0, 3)); // show top 3
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchWinners();
+  }, []);
+
+  const displayWinners = dbWinners.length > 0 ? dbWinners.map((w, index) => {
+    const tiers = ['Gold', 'Silver', 'Bronze'];
+    const icons = [Trophy, Medal, Award];
+    return {
+      category: w.category || 'Winner',
+      icon: icons[index] || Trophy,
+      tier: tiers[index] || 'Bronze',
+      label: w.projectName || 'TBD',
+      teamName: w.teamName || 'Results Coming Soon',
+    };
+  }) : winnersPlaceholder;
+
   return (
     <section className={styles.winners} id="winners">
       <div className={styles.container}>
@@ -74,7 +104,7 @@ export default function Winners() {
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
         >
-          {winnersPlaceholder.map((winner) => {
+          {displayWinners.map((winner, idx) => {
             const IconComponent = winner.icon;
             const trophyClass =
               styles[`trophy${winner.tier}` as keyof typeof styles];
@@ -83,7 +113,7 @@ export default function Winners() {
 
             return (
               <motion.div
-                key={winner.category}
+                key={winner.category + idx}
                 className={styles.card}
                 variants={cardVariants}
               >
@@ -94,8 +124,8 @@ export default function Winners() {
                   <span className={`${styles.categoryBadge} ${badgeClass}`}>
                     {winner.category}
                   </span>
-                  <h3 className={styles.cardTitle}>TBD</h3>
-                  <p className={styles.comingSoon}>{winner.label}</p>
+                  <h3 className={styles.cardTitle}>{winner.label}</h3>
+                  <p className={styles.comingSoon}>{winner.teamName || winner.label}</p>
                 </div>
               </motion.div>
             );

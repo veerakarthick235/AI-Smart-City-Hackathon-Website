@@ -25,13 +25,7 @@ export default function WinnersShowcase({ eventTitle, winners }: { eventTitle: s
     second_runner: { label: 'Second Runner Up', icon: Award, className: styles.cardSecondRunner },
   };
 
-  const getWinner = (category: string) => winners.find(w => w.category === category);
-
-  const displayWinners = [
-    getWinner('grand'),
-    getWinner('runner'),
-    getWinner('second_runner')
-  ].filter(Boolean);
+  const displayWinners = winners;
 
   return (
     <div className={styles.page}>
@@ -57,8 +51,13 @@ export default function WinnersShowcase({ eventTitle, winners }: { eventTitle: s
             animate="visible"
             variants={stagger}
           >
-            {displayWinners.map((winner: any) => {
-              const config = categoryConfig[winner.category] || categoryConfig.grand;
+            {displayWinners.map((winner: any, index: number) => {
+              const defaultClasses = [styles.cardGrand, styles.cardRunner, styles.cardSecondRunner];
+              const config = categoryConfig[winner.category] || { 
+                label: winner.category, 
+                icon: Trophy, 
+                className: defaultClasses[index] || styles.cardSecondRunner 
+              };
               const Icon = config.icon;
               const members = JSON.parse(winner.members || '[]');
 

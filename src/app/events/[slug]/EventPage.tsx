@@ -58,6 +58,24 @@ export default function EventPage({ event }: { event: any }) {
     { name: 'Presentation', percentage: 15, color: '#EC4899' },
   ];
 
+  const now = new Date();
+  const startDate = new Date(event.startDate);
+  const endDate = new Date(event.endDate);
+  
+  let displayStatus = event.status;
+  let badgeClass = 'badge-primary';
+  
+  if (now > endDate) {
+    displayStatus = 'completed';
+    badgeClass = 'badge-success';
+  } else if (now >= startDate && now <= endDate) {
+    displayStatus = 'active';
+    badgeClass = 'badge-warning';
+  } else {
+    displayStatus = 'upcoming';
+    badgeClass = 'badge-primary';
+  }
+
   return (
     <div className={styles.page}>
       <Navbar />
@@ -68,7 +86,7 @@ export default function EventPage({ event }: { event: any }) {
         <div className={`container ${styles.heroContent}`}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="section-label">
-              <Calendar size={14} /> {new Date(event.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} – {new Date(event.endDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              <Calendar size={14} /> {startDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} – {endDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
             </span>
           </motion.div>
           <motion.h1 className={styles.heroTitle} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}>
@@ -79,7 +97,7 @@ export default function EventPage({ event }: { event: any }) {
           </motion.p>
           <motion.div className={styles.heroMeta} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
             <span className={styles.metaItem}><MapPin size={16} /> {event.location}</span>
-            <span className={`badge badge-success`}>{event.status === 'completed' ? 'Completed' : event.status}</span>
+            <span className={`badge ${badgeClass}`}>{displayStatus.charAt(0).toUpperCase() + displayStatus.slice(1)}</span>
           </motion.div>
           <motion.div className={styles.statsRow} initial="hidden" animate="visible" variants={stagger}>
             {stats.map((stat) => (
@@ -92,9 +110,9 @@ export default function EventPage({ event }: { event: any }) {
             <Link href={`/events/${event.slug}/winners`} className="btn btn-primary btn-lg">
               <Trophy size={18} /> View Winners
             </Link>
-            <Link href={`/events/${event.slug}/projects`} className="btn btn-secondary btn-lg">
+            <a href="https://ai-smart-city-hackathon-2026.devpost.com/project-gallery" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">
               Explore Projects
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>

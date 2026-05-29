@@ -35,74 +35,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <div className={styles.grid}>
-          {/* Brand */}
-          <div className={styles.brand}>
-            <span className={styles.logo}>Innovation Hacks</span>
-            <p className={styles.tagline}>
-              Empowering the next generation of innovators through world-class
-              hackathons and collaborative challenges.
-            </p>
-            <div className={styles.socials}>
-              {SOCIAL_LINKS.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className={styles.socialLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                >
-                  <social.icon />
-                </a>
-              ))}
 
-              <a
-                href="mailto:hello@innovationhacks.dev"
-                className={styles.socialLink}
-                aria-label="Email"
-              >
-                <Mail />
-              </a>
-            </div>
-          </div>
-
-          {/* Platform */}
-          <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Platform</h4>
-            <div className={styles.columnLinks}>
-              {PLATFORM_LINKS.map((link) => (
-                <Link key={link.label} href={link.href} className={styles.columnLink}>
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Events */}
-          <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Events</h4>
-            <div className={styles.columnLinks}>
-              {EVENT_LINKS.map((link) => (
-                <Link key={link.label} href={link.href} className={styles.columnLink}>
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Resources + Connect */}
-          <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Resources</h4>
-            <div className={styles.columnLinks}>
-              {RESOURCE_LINKS.map((link) => (
-                <Link key={link.label} href={link.href} className={styles.columnLink}>
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* Bottom bar */}
         <div className={styles.bottom}>
@@ -117,10 +50,10 @@ export default function Footer() {
               Terms of Service
             </Link>
             <a
-              href="mailto:hello@innovationhacks.dev"
+              href="mailto:hello@innovationhacks.de"
               className={styles.bottomLink}
             >
-              hello@innovationhacks.dev
+              innovationhacksofficial@gmail.com
             </a>
           </div>
         </div>

@@ -511,3 +511,10 @@ p {
     font-size: 0.95rem;
   }
 }
+
+/* Force hide Next.js dev indicator */
+nextjs-portal,
+[data-nextjs-toast],
+.nextjs-toast {
+  display: none !important;
+}

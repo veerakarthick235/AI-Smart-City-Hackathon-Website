@@ -1,9 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Link as LinkIcon, ArrowRight } from 'lucide-react';
+import { Link as LinkIcon } from 'lucide-react';
 import { JUDGES_DATA } from '@/lib/constants';
-import GradientButton from '../ui/GradientButton';
 import styles from './Judges.module.css';
 
 function getInitials(name: string): string {
@@ -33,8 +32,6 @@ const cardVariants = {
 };
 
 export default function Judges() {
-  const visibleJudges = JUDGES_DATA.slice(0, 8);
-
   return (
     <section className={styles.judges} id="judges">
       <div className={styles.container}>
@@ -62,13 +59,19 @@ export default function Judges() {
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
         >
-          {visibleJudges.map((judge) => (
+          {JUDGES_DATA.map((judge) => (
             <motion.div
               key={judge.name}
               className={styles.card}
               variants={cardVariants}
             >
-              <div className={styles.avatar}>{getInitials(judge.name)}</div>
+              <div className={styles.avatar}>
+                {(judge as any).photo ? (
+                  <img src={(judge as any).photo} alt={judge.name} className={styles.judgeImage} />
+                ) : (
+                  getInitials(judge.name)
+                )}
+              </div>
               <h4 className={styles.name}>{judge.name}</h4>
               <p className={styles.judgeTitle}>{judge.title}</p>
               {judge.company && (
@@ -79,22 +82,6 @@ export default function Judges() {
               </a>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          className={styles.viewAllWrapper}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <GradientButton
-            href="/events/ai-autonomous-smart-city-hackathon-2026/judges"
-            variant="secondary"
-          >
-            View All Judges
-            <ArrowRight size={16} style={{ marginLeft: '8px' }} />
-          </GradientButton>
         </motion.div>
       </div>
     </section>

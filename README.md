@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Innovation Hacks — AI Autonomous Smart City Hackathon 🏙️🤖
 
-## Getting Started
+Welcome to the official repository for the **Innovation Hacks: AI Autonomous Smart City Hackathon** platform! This is a modern, high-performance web application built to host, manage, and showcase global hackathons focused on building the future of smart cities using Artificial Intelligence.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
+- **Dynamic Event Pages:** Beautiful, responsive, and animated event landing pages.
+- **Admin Dashboard:** Secure, authenticated admin portal (`/admin/login`) for managing hackathons.
+- **Event Management:** Create, edit, and delete events with dynamic status indicators (Upcoming, Active, Completed).
+- **Winners Showcase:** Hall of Fame integration to beautifully display Grand Winners and Runner-Ups with dynamic podium rendering.
+- **Modern Aesthetics:** Glassmorphism UI, neon gradients, dark mode default, and smooth micro-animations using Framer Motion.
+- **SEO Optimized:** Metadata, dynamic routing, and fast initial page loads.
+
+## 🛠️ Technology Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router, Turbopack)
+- **Library:** [React 19](https://react.dev/)
+- **Database:** [SQLite](https://sqlite.org/index.html) with [Prisma ORM](https://www.prisma.io/)
+- **Styling:** Vanilla CSS Modules with custom CSS variables (Design System)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+
+## 💻 Getting Started
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) (v18+) and npm installed.
+
+### 1. Clone the repository
+\`\`\`bash
+git clone https://github.com/your-username/smart-city-hackathon.git
+cd smart-city-hackathon
+\`\`\`
+
+### 2. Install Dependencies
+\`\`\`bash
+npm install
+\`\`\`
+
+### 3. Setup the Database
+Initialize the Prisma SQLite database and generate the Prisma client:
+\`\`\`bash
+npx prisma generate
+npx prisma db push
+\`\`\`
+
+### 4. Environment Variables
+Create a \`.env\` file in the root of the project and add your admin secret:
+\`\`\`env
+ADMIN_SECRET=innovation-hacks-admin-2026
+\`\`\`
+
+### 5. Run the Development Server
+\`\`\`bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Admin Access
+To manage events and winners, navigate to:
+**URL:** `http://localhost:3000/admin/login`  
+**Password:** `innovation-hacks-admin-2026` (or whatever you set in your `.env`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📂 Project Structure
 
-## Learn More
+\`\`\`text
+src/
+├── app/                  # Next.js App Router pages and API routes
+│   ├── admin/            # Secure admin dashboard routes
+│   ├── api/              # Backend API routes (Events, Winners)
+│   ├── events/           # Dynamic public event pages
+│   └── globals.css       # Global design system & theme tokens
+├── components/           # Reusable UI components
+│   ├── layout/           # Navbar, Footer, Admin layouts
+│   ├── sections/         # Home page sections (Hero, Judges, etc.)
+│   └── ui/               # Buttons, Particle backgrounds, etc.
+├── lib/                  # Utilities (Prisma client, Auth wrappers)
+└── prisma/               # Database schema
+\`\`\`
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Design System
+The UI relies heavily on global CSS variables defined in \`globals.css\`. To change the primary theme colors (e.g., swapping the neon blue/purple for something else), simply update the root variables:
+\`\`\`css
+:root {
+  --primary: #00D4FF;
+  --secondary: #8B5CF6;
+  --accent: #06FFA5;
+}
+\`\`\`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Built with ❤️ by the Innovation Hacks Team.*

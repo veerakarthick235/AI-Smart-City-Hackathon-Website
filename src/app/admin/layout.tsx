@@ -45,27 +45,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
     async function checkAuth() {
       try {
-        const res = await fetch('/api/events');
+        const res = await fetch('/api/auth');
         if (res.ok) {
           setAuthenticated(true);
         } else {
           setAuthenticated(false);
+          router.push('/admin/login');
         }
       } catch {
         setAuthenticated(false);
+        router.push('/admin/login');
       }
     }
 
-    const checkCookie = () => {
-      return document.cookie.includes('admin_token');
-    };
-
-    if (!checkCookie()) {
-      router.push('/admin/login');
-      return;
-    }
-
-    setAuthenticated(true);
     checkAuth();
   }, [pathname, router]);
 

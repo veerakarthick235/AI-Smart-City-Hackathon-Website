@@ -1,41 +1,42 @@
+import { writeHeapSnapshot } from "v8";
+
 export const SITE_CONFIG = {
   name: 'Innovation Hacks',
   tagline: 'Building Intelligent Cities. Powered by AI.',
   description: 'Innovation Hacks is a global hackathon platform building the future of technology through competitive innovation events.',
-  url: 'https://innovationhacks.dev',
+  url: 'https://veerakarthick.in',
   email: 'innovationhacksofficial@gmail.com',
   social: {
-    linkedin: 'https://linkedin.com/company/innovation-hacks',
-    instagram: 'https://instagram.com/innovationhacks',
-    github: 'https://github.com/innovationhacks',
-    whatsapp: 'https://chat.whatsapp.com/innovationhacks',
+    linkedin: 'https://www.linkedin.com/in/karthickkumar-s-b04a10348/',
+    instagram: 'https://instagram.com/veerakarthick_235',
+    github: 'https://github.com/veerakarthick235',
+    whatsapp: 'https://chat.whatsapp.com/IDEMFuT1Y8x7LPt3zyQsaI',
   },
 };
 
 export const FEATURED_EVENT_SLUG = 'ai-autonomous-smart-city-hackathon-2026';
 
 export const JUDGES_DATA = [
-  { name: 'Praveen Coppa', title: 'Workspace AI Platform Engineer', company: 'Google', order: 1 },
-  { name: 'Mihir Shelar', title: 'Senior Technical Program Manager', company: 'Amazon', order: 2 },
-  { name: 'Somnath Banerjee', title: 'Lead Data Engineer', company: 'Elevance Health', order: 3 },
-  { name: 'Shri Lakshmi Rajagopal', title: 'Senior QA Automation Engineer', company: 'Deloitte', order: 4 },
-  { name: 'Prakshal Doshi', title: 'Software Engineer', company: 'Apple', order: 5 },
-  { name: 'Xingpeng Xiao', title: 'Software Engineering Manager', company: 'Disney', order: 6 },
-  { name: 'Praneetha Kotla', title: 'AI Solutions Architect', company: '', order: 7 },
-  { name: 'Swarnamalya Mohan', title: 'Senior Full Stack Developer', company: 'FedEx', order: 8 },
-  { name: 'Shyam Goyal', title: 'Senior Data Analyst', company: 'Samsung', order: 9 },
-  { name: 'Preethi Bharathy', title: 'Data Scientist', company: '', order: 10 },
-  { name: 'Suraj Devatha', title: 'Senior Software Engineer', company: '', order: 11 },
-  { name: 'Hareesha KoratikereRameshappa', title: 'Sr Technical Product Manager – AI & ADAS Systems', company: '', order: 12 },
-  { name: 'Venkata Revunuru', title: 'Enterprise AI Architect', company: '', order: 13 },
-  { name: 'Panagitois Coutoulas', title: 'Enterprise AI Systems', company: '', order: 14 },
-  { name: 'Karthik Karunanithi', title: 'Solution Architect', company: 'IBM', order: 15 },
-  { name: 'Silu Panda', title: 'Senior Software Engineer', company: 'LinkedIn', order: 16 },
-  { name: 'Manisha Konda', title: 'Senior Data Analyst', company: 'Walgreens', order: 17 },
-  { name: 'Elumalai M', title: 'Software Engineer III', company: '', order: 18 },
-  { name: 'Senthil Kumar R', title: 'AI Researcher', company: '', order: 19 },
-  { name: 'Ramamoorthy S', title: 'AI Engineer', company: '', order: 20 },
-  { name: 'Sunil Subash', title: 'Data Scientist', company: '', order: 21 },
+  { name: 'Praveen Coppa', title: 'Workspace AI Platform Engineer at Google', company: 'Google', photo: '/images/judges/praveen.jpeg', order: 1 },
+  { name: 'Mihir Shelar', title: 'Senior Technical Program Manager @ Amazon | IEEE Senior Member', company: 'Amazon', photo: '/images/judges/mihir.jpeg', order: 2 },
+  { name: 'Shri Lakshmi Rajagopal', title: 'Senior QA Automation Engineer @ Deloitte', company: 'Deloitte', photo: '/images/judges/shri.jpeg', order: 4 },
+  { name: 'Prakshal Doshi', title: 'Software Engineer @ Apple | AI Infrastructure | MLOps', company: 'Apple', photo: '/images/judges/doshi.jpeg', order: 5 },
+  { name: 'Xingpeng Xiao', title: 'Software Engineering Manager at Disney', company: 'Disney', photo: '/images/judges/xiao.jpeg', order: 6 },
+  { name: 'Praneetha Kotla', title: 'AI Solutions Architect | Global Hackathon Judge | IEEE Senior Member', company: '', photo: '/images/judges/kotla.jpeg', order: 7 },
+  { name: 'Swarnamalya Mohan', title: 'Senior Full Stack Developer at FedEx', company: 'FedEx', photo: '/images/judges/swarna.jpeg', order: 8 },
+  { name: 'Shyam Goyal', title: 'Senior Data Analyst @ Samsung | Data Science & ML Specialist', company: 'Samsung', photo: '/images/judges/goyal.jpeg', order: 9 },
+  { name: 'Preethi Bharathy', title: 'Data Scientist | AI & Scalable Systems', company: '', photo: '/images/judges/ms_suraj.jpeg', order: 10 },
+  { name: 'Suraj Devatha', title: 'Senior Software Engineer Distributed Systems | AI-driven Platforms', company: '', photo: '/images/judges/suraj.jpeg', order: 11 },
+  { name: 'Hareesha KoratikereRameshappa', title: 'Sr. Technical Product Manager — AI & ADAS Systems Phantom AI', company: 'Phantom AI', photo: '/images/judges/rameshappa.jpeg', order: 12 },
+  { name: 'Venkata Revunuru', title: 'Senior Software Engineer and Enterprise AI Architect', company: '', photo: '/images/judges/venkat.jpeg', order: 13 },
+  { name: 'Panagitois Coutoulas', title: 'Enterprise AI Systems', company: '', photo: '/images/judges/peter.jpeg', order: 14 },
+  { name: 'Karthik Karunanithi', title: 'Solution Architect at IBM', company: 'IBM', photo: '/images/judges/karthik.jpeg', order: 15 },
+  { name: 'Silu Panda', title: 'Senior Software Engineer — ML Infrastructure | LinkedIn', company: 'LinkedIn', photo: '/images/judges/silu.jpeg', order: 16 },
+  { name: 'Manisha Konda', title: 'Senior Data Analyst at Walgreens', company: 'Walgreens', photo: '/images/judges/manisha.jpeg', order: 17 },
+  { name: 'Elumalai M', title: 'Software Engineer III — Java Development', company: '', photo: '/images/judges/elumalai.jpeg', order: 18 },
+  { name: 'Senthil Kumar R', title: 'AI Researcher | Intelligent Systems & Data Science', company: '', photo: '/images/judges/rsk.jpeg', order: 19 },
+  { name: 'Ramamoorthy S', title: 'AI Engineer | GenAI LLM Specialist', company: '', photo: '/images/judges/ramamoorthy.jpg', order: 20 },
+  { name: 'Sunil Subash', title: 'Data Scientist | AI & Analytics', company: '', photo: '/images/judges/sunil_subash.jpg', order: 21 },
 ];
 
 export const THEMES_DATA = [
@@ -44,11 +45,6 @@ export const THEMES_DATA = [
   { title: 'Smart Energy Management', icon: 'Zap', description: 'Intelligent power grids, renewable energy optimization, and consumption analytics.' },
   { title: 'Urban Healthcare AI', icon: 'Heart', description: 'AI diagnostics, telemedicine platforms, and public health monitoring systems.' },
   { title: 'Public Safety & Surveillance', icon: 'Shield', description: 'Smart emergency response, crime prediction, and disaster management.' },
-  { title: 'Smart Infrastructure', icon: 'Building', description: 'Intelligent buildings, predictive maintenance, and urban planning tools.' },
-  { title: 'IoT Solutions', icon: 'Wifi', description: 'Connected sensor networks, edge computing, and smart device ecosystems.' },
-  { title: 'Computer Vision', icon: 'Eye', description: 'Visual recognition systems, autonomous navigation, and image analytics.' },
-  { title: 'Generative AI', icon: 'Sparkles', description: 'Creative AI applications, content generation, and synthetic data systems.' },
-  { title: 'Autonomous Systems', icon: 'Bot', description: 'Self-driving vehicles, robotic systems, and autonomous decision-making.' },
 ];
 
 export const PRIZES_DATA = [
@@ -81,12 +77,12 @@ export const JUDGING_CRITERIA = [
 ];
 
 export const TIMELINE_DATA = [
-  { title: 'Registration Opens', date: '2026-03-15', status: 'completed' },
+  { title: 'Registration Opens', date: '2026-04-20', status: 'completed' },
   { title: 'Hackathon Starts', date: '2026-04-30', status: 'completed' },
   { title: 'Submission Deadline', date: '2026-05-04', status: 'completed' },
-  { title: 'Judging Phase', date: '2026-05-10', status: 'completed' },
-  { title: 'Winner Announcement', date: '2026-05-15', status: 'completed' },
-  { title: 'Certificate Distribution', date: '2026-05-20', status: 'completed' },
+  { title: 'Judging Phase', date: '2026-05-05', status: 'completed' },
+  { title: 'Winner Announcement', date: '2026-05-08', status: 'completed' },
+  { title: 'Certificate Distribution', date: '2026-05-08', status: 'completed' },
 ];
 
 export const RULES_DATA = [
@@ -101,11 +97,11 @@ export const RULES_DATA = [
 ];
 
 export const TEAM_DATA = [
-  { name: 'Veera Karthick', role: 'Founder & Organizer', order: 1 },
-  { name: 'Sarjan P', role: 'Co Organizer', order: 2 },
-  { name: 'Lokesh M', role: 'Manager', order: 3 },
-  { name: 'Nishanth K', role: 'Coordinator', order: 4 },
-  { name: 'Community Lead', role: 'Community Lead', order: 5 },
+  { name: 'Karthickkumar S', role: 'Founder & Organizer', photo: '/images/team/veera_karthick.jpeg', order: 1 },
+  { name: 'Sarjan P', role: 'Co Organizer', photo: '/images/team/sarjan.jpeg', order: 2 },
+  { name: 'Lokesh M', role: 'Manager', photo: '/images/team/loki.png', order: 3 },
+  { name: 'Nishanth K', role: 'Coordinator', photo: '/images/team/Nishanth.jpeg', order: 4 },
+  { name: 'Priyadharshini S', role: 'Community Lead', photo: '/images/team/priya.png', order: 5 },
 ];
 
 export const STATS_DATA = [

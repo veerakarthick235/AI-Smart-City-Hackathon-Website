@@ -1,6 +1,14 @@
 import { NextResponse } from 'next/server';
-import { getAdminSecret } from '@/lib/auth';
+import { getAdminSecret, verifyAdmin } from '@/lib/auth';
 import { cookies } from 'next/headers';
+
+export async function GET() {
+  const isAdmin = await verifyAdmin();
+  if (!isAdmin) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  return NextResponse.json({ success: true });
+}
 
 export async function POST(request: Request) {
   try {

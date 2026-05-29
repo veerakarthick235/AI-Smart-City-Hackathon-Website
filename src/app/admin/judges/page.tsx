@@ -87,8 +87,8 @@ export default function JudgesManagement() {
                     <td>{judge.expertise}</td>
                     <td>{judge.eventsAssigned}</td>
                     <td>
-                      <span className={getStatusBadgeClass(judge.status)}>
-                        {judge.status.charAt(0).toUpperCase() + judge.status.slice(1)}
+                      <span className={getStatusBadgeClass(judge.status || 'active')}>
+                        {(judge.status || 'active').charAt(0).toUpperCase() + (judge.status || 'active').slice(1)}
                       </span>
                     </td>
                     <td>

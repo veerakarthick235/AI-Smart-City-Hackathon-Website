@@ -31,7 +31,11 @@ export default function Team() {
           {TEAM_DATA.map((member, i) => (
             <motion.div key={i} className={`glass-card ${styles.teamCard}`} variants={fadeUp}>
               <div className={styles.teamAvatar}>
-                {member.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                {(member as any).photo ? (
+                  <img src={(member as any).photo} alt={member.name} className={styles.teamImage} />
+                ) : (
+                  member.name.split(' ').map((n) => n[0]).join('').slice(0, 2)
+                )}
               </div>
               <h4>{member.name}</h4>
               <span className="badge badge-secondary">{member.role}</span>

@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Events', href: '/events' },
   { label: 'Hall of Fame', href: '/hall-of-fame' },
-  { label: 'Verify', href: '/verify' },
   { label: 'About', href: '/about' },
 ];
 

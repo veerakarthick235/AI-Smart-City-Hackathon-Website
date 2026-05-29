@@ -5,11 +5,35 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedCounter from '@/components/ui/AnimatedCounter';
 import { Lightbulb, Users, TrendingUp, Award, Globe, Code } from 'lucide-react';
 import styles from './about.module.css';
+import { SITE_CONFIG } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'About | Innovation Hacks',
   description: 'Innovation Hacks is a global hackathon platform building the future through competitive innovation events.',
 };
+
+const Github = ({ size = 24 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.03c3.15-.38 6.5-1.54 6.5-7a5.2 5.2 0 0 0-1.5-3.8 4.8 4.8 0 0 0 .1-3.7s-1.2-.4-3.9 1.4a13.3 13.3 0 0 0-7 0c-2.7-1.8-3.9-1.4-3.9-1.4a4.8 4.8 0 0 0 .1 3.7 5.2 5.2 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.5 7a4.8 4.8 0 0 0-1 3.03V22" />
+    <path d="M9 20c-5 1.5-5-2.5-7-3" />
+  </svg>
+);
+
+const Linkedin = ({ size = 24 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
+const Instagram = ({ size = 24 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
 
 export default function AboutPage() {
   const values = [
@@ -64,17 +88,17 @@ export default function AboutPage() {
             <div className={styles.statsGrid}>
               <div className={styles.statItem}>
                 <Globe size={40} className={styles.statIcon} />
-                <AnimatedCounter end={12} suffix="+" />
+                <AnimatedCounter end={20} suffix="+" />
                 <span>Countries Reached</span>
               </div>
               <div className={styles.statItem}>
                 <Users size={40} className={styles.statIcon} />
-                <AnimatedCounter end={8500} suffix="+" />
+                <AnimatedCounter end={87} suffix="+" />
                 <span>Total Participants</span>
               </div>
               <div className={styles.statItem}>
                 <Code size={40} className={styles.statIcon} />
-                <AnimatedCounter end={1200} suffix="+" />
+                <AnimatedCounter end={45} suffix="+" />
                 <span>Projects Submitted</span>
               </div>
               <div className={styles.statItem}>
@@ -108,14 +132,32 @@ export default function AboutPage() {
             <SectionHeading label="Leadership" title="Meet The Founder" />
             <div className={`glass-card ${styles.leaderCard}`}>
               <div className={styles.leaderAvatar}>
-                VK
+                <img 
+                  src="/images/team/veera_karthick.jpeg" 
+                  alt="Karthickkumar S" 
+                  className={styles.leaderImage} 
+                />
               </div>
               <div className={styles.leaderInfo}>
-                <h3>Veera Karthick</h3>
+                <h3>Karthickkumar S</h3>
                 <span className="badge badge-primary">Founder & Organizer</span>
                 <p>
-                  Veera founded Innovation Hacks with a simple premise: the world's most pressing challenges require the brightest minds working together without boundaries. With a background in AI and scalable systems, Veera has grown the platform from a local university event to a global phenomenon, focusing on creating premium, enterprise-grade experiences for hackers and sponsors alike.
+                  Karthickkumar founded Innovation Hacks with a simple premise: the world's most pressing challenges require the brightest minds working together without boundaries. With a background in AI and scalable systems, Veera has grown the platform from a local university event to a global phenomenon, focusing on creating premium, enterprise-grade experiences for hackers and sponsors alike.
                 </p>
+                <div className={styles.socialLinks}>
+                  <a href={SITE_CONFIG.url} target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+                    <Globe size={20} />
+                  </a>
+                  <a href={SITE_CONFIG.social.github} target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+                    <Github size={20} />
+                  </a>
+                  <a href={SITE_CONFIG.social.linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+                    <Linkedin size={20} />
+                  </a>
+                  <a href={SITE_CONFIG.social.instagram} target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+                    <Instagram size={20} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
